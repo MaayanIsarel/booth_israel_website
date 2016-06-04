@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Registered to mailing list
+    <a href="/registration_for_mailing_lists/new" class="btn btn-lg btn-success">Register to mailing list</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Full name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Current company</th>
+        <th>Current industry</th>
+        <th>Intersted in the class of</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @registration_for_mailing_lists.each do |registration_for_mailing_list| %>
+      <tr>
+        <td><%= registration_for_mailing_list.full_name %></td>
+        <td><%= registration_for_mailing_list.email %></td>
+        <td><%= registration_for_mailing_list.phone %></td>
+        <td><%= registration_for_mailing_list.current_company %></td>
+        <td><%= registration_for_mailing_list.current_industry %></td>
+        <td><%= registration_for_mailing_list.class_of %></td>
+        <td>
+          <a href="/registration_for_mailing_lists/<%= registration_for_mailing_list.id %>" class="btn btn-primary">Show</a>
+          <a href="/registration_for_mailing_lists/<%= registration_for_mailing_list.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_registration_for_mailing_list/<%= registration_for_mailing_list.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

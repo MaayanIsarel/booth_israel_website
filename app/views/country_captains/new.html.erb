@@ -1,0 +1,99 @@
+<!-- Validation failure messages -->
+<% if @country_captain.errors.any? %>
+  <% @country_captain.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Country Captain</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_country_captain" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Full Name
+        </label>
+
+        <input id="name" name="name" placeholder="Name" class="form-control" rows="3"><%= @country_captain.name %></input>
+      </div>
+
+      <!-- Label and input for picture -->
+      <div class="form-group">
+        <label for="picture" class="control-label">
+          Picture
+        </label>
+
+        <input type="text" id="picture" name="picture" placeholder="Picture" class="form-control" value="<%= @country_captain.picture %>">
+      </div>
+
+      <!-- Label and input for email -->
+      <div class="form-group">
+        <label for="email" class="control-label">
+          Email address:</label>
+
+        <input id="email" name="email" placeholder="Email" class="form-control" rows="3"><%= @country_captain.email %></input>
+      </div>
+
+      <!-- Label and input for linkedin -->
+      <div class="form-group">
+        <label for="linkedin" class="control-label">
+          LinkedIn profile:
+        </label>
+
+        <input type="text" id="linkedin" name="linkedin" placeholder="Linkedin" class="form-control" value="<%= @country_captain.linkedin %>">
+      </div>
+
+      <!-- Label and input for undergrad -->
+      <div class="form-group">
+        <label for="undergrad" class="control-label">
+          Undergrad University and Major:
+        </label>
+
+        <input id="undergrad" name="undergrad" placeholder="Undergrad" class="form-control" rows="3"><%= @country_captain.undergrad %></input>
+      </div>
+
+      <!-- Label and input for previous_industry -->
+      <div class="form-group">
+        <label for="previous_industry" class="control-label">
+          Previous industry:
+        </label>
+
+        <input id="previous_industry" name="previous_industry" placeholder="Previous industry" class="form-control" rows="3"><%= @country_captain.previous_industry %></input>
+      </div>
+
+      <!-- Label and input for summer_internship -->
+      <div class="form-group">
+        <label for="summer_internship" class="control-label">
+          Summer internship:
+        </label>
+
+        <input id="summer_internship" name="summer_internship" placeholder="Summer internship" class="form-control" rows="3"><%= @country_captain.summer_internship %></input>
+      </div>
+
+      <!-- Label and input for ask_me -->
+      <div class="form-group">
+        <label for="ask_me" class="control-label">
+          Ask me about:
+        </label>
+
+        <input id="ask_me" name="ask_me" placeholder="Ask me" class="form-control" rows="3"><%= @country_captain.ask_me %></input>
+      </div>
+
+      <button class="btn btn-success">
+        Create Country Captain
+      </button>
+      or
+      <a href="/country_captains">Cancel</a>
+    </form>
+  </div>
+</div>

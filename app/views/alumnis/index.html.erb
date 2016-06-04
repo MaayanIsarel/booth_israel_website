@@ -1,0 +1,99 @@
+<div class="page-header">
+  <h1>
+    Alumnus and Current Students
+    <% if current_user.present? && current_user.admin == true %><a href="/alumnis/new" class="btn btn-lg btn-success">New Alumni</a><% end %>
+  </h1>
+</div>
+
+
+<%= search_form_for @q do |f| %>
+  <p class="lead">Narrow results:</p>
+  <div class="form-group">
+    <%= f.label :name_or_user_type_or_past_employers_cont, "Search by name" %>
+    <%= f.text_field :name_or_user_type_or_past_employers_cont, :class => "form-control", :placeholder => "Enter" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name_cont, "Search by name" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Enter a name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_type_cont, "Search alumnus or students" %>
+    <%= f.text_field :user_type_cont, :class => "form-control", :placeholder => "Enter Alumni or Student" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_employer_cont, "Search by current employer" %>
+    <%= f.text_field :current_employer_cont, :class => "form-control", :placeholder => "Enter Amazon/BCG etc." %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :past_employers_cont, "Search by past employer" %>
+    <%= f.text_field :past_employers_cont, :class => "form-control", :placeholder => "Enter Amazon/BCG etc." %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_location_cont, "Search by location" %>
+    <%= f.text_field :current_location_cont, :class => "form-control", :placeholder => "Enter a location city or country" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :program_cont, "Search by program type" %>
+    <%= f.text_field :program_cont, :class => "form-control", :placeholder => "Enter Full time/Exsecutive/Evening" %>
+  </div>
+
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+
+  <a href="/alumnis" class="btn btn-default btn-block">Clear filters</a>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Class of</th>
+        <th>User type</th>
+        <th>Current employer</th>
+        <th>Past employers</th>
+        <th>Current location</th>
+        <th>Booth email</th>
+        <th>LinkedIn</th>
+        <th>Program</th>
+        <th>Actions</th>
+      </tr>
+
+
+      <% @alumnis.each do |alumni| %>
+      <tr>
+        <% if alumni.display_nothing == false || alumni.display_nothing == nil %>
+        <td><%= alumni.name %></td>
+        <td><%= alumni.classof %></td>
+        <td><%= alumni.user_type %></td>
+        <td><%= alumni.current_employer %></td>
+        <td><%= alumni.past_employers %></td>
+        <td><% if alumni.display_location == false %>
+          <%= alumni.current_location %><% end %></td>
+        <td><% if alumni.display_email == false %>
+          <%= alumni.booth_email %><% end %></td>
+        <td><% if alumni.display_linkedin == false || alumni.linkedin.present? %>
+        <a href="<%= alumni.linkedin %>">
+          LinkedIn</a><% end %></td>
+        <td><%= alumni.program %></td>
+        <td>
+          <a href="/alumnis/<%= alumni.id %>" class="btn btn-primary">Show</a>
+
+          <% if (current_user.present? && (current_user.admin == true || current_user.id == alumni.user_id )) %>
+          <a href="/alumnis/<%= alumni.id %>/edit" class="btn btn-warning">Edit</a>
+          <% end %>
+
+          <% if current_user.present? && current_user.admin == true %>
+          <a href="/delete_alumni/<%= alumni.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

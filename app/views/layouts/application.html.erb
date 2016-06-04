@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BoothIsraelWebsite</title>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/spacelab/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <style>
+  /* Only necessary if you are using navbar-fixed-top */
+  body {
+    padding-top: 60px;
+  }
+
+  body { padding-bottom: 70px; }
+  </style>
+
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand"><img style="max-width:100px; "   src=        "data:image/png;base64,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" class = "img-responsive" alt="Responsive image"/></a>
+        <a href="/" class="navbar-brand">| Chicago Booth Israeli Network</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/rankings">Ranks & Reports</a></li>
+          <li><a href="/country_captains">Country Captains</a></li>
+          <li><a href="/alumnis">Alumni & Students</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user.present? %>
+          <li><a href="/users/sign_in"><%= current_user.email %></a></li>
+          <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a></li>
+          <% else %>
+          <li><a href="/users/sign_in">Alumni Log-In</a></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <a href="/rails/info">Sitemap</a>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <il><a href="https://www.facebook.com/chicagoboothbusiness/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></il>
+          <il><a href="https://www.linkedin.com/edu/the-university-of-chicago-booth-school-of-business-18315"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></il>
+          <il><a href="https://www.chicagobooth.edu/">Official Chicago Booth website</a>
+          </il>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <% if notice.present? %>
+    <div class="alert alert-dismissable alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= notice %>
+    </div>
+    <% end %>
+
+    <% if alert.present? %>
+    <div class="alert alert-dismissable alert-warning">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= alert %>
+    </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</body>
+</html>

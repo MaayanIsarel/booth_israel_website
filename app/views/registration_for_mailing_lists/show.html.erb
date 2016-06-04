@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3>Registration For Mailing List #<%= @registration_for_mailing_list.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Class of</dt>
+      <dd><%= @registration_for_mailing_list.class_of %></dd>
+
+      <dt>Phone</dt>
+      <dd><%= @registration_for_mailing_list.phone %></dd>
+
+      <dt>Email</dt>
+      <dd><%= @registration_for_mailing_list.email %></dd>
+
+      <dt>Current company</dt>
+      <dd><%= @registration_for_mailing_list.current_company %></dd>
+
+      <dt>Current industry</dt>
+      <dd><%= @registration_for_mailing_list.current_industry %></dd>
+
+      <dt>Full name</dt>
+      <dd><%= @registration_for_mailing_list.full_name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/registration_for_mailing_lists" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/registration_for_mailing_lists/<%= @registration_for_mailing_list.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_registration_for_mailing_list/<%= @registration_for_mailing_list.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

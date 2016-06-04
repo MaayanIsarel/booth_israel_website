@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h3>Country Captain #<%= @country_captain.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Ask me</dt>
+      <dd><%= @country_captain.ask_me %></dd>
+
+      <dt>Summer internship</dt>
+      <dd><%= @country_captain.summer_internship %></dd>
+
+      <dt>Previous industry</dt>
+      <dd><%= @country_captain.previous_industry %></dd>
+
+      <dt>Linkedin</dt>
+      <dd><%= @country_captain.linkedin %></dd>
+
+      <dt>Email</dt>
+      <dd><%= @country_captain.email %></dd>
+
+      <dt>Undergrad</dt>
+      <dd><%= @country_captain.undergrad %></dd>
+
+      <dt>Picture</dt>
+      <dd><%= @country_captain.picture %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @country_captain.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/country_captains" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/country_captains/<%= @country_captain.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_country_captain/<%= @country_captain.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

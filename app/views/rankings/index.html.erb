@@ -1,0 +1,70 @@
+<div class="page-header">
+  <h1>Welcom to the Chicago Booth Israeli network
+  <a href="/registration_for_mailing_lists/new" class="btn btn-lg btn-danger" style="float:right;">Register to Mailing List</a></h1>
+  <h4>
+    Welcome to the Chicago Booth Israeli network website. Here you can find information about the school rankings, recent employment reports, current Israel country captains and a directory of Israeli Booth alumni and current students. Please fell free to reach out and receive information about the school culture, recruting process and career opertunities.
+  </h4>
+</div>
+
+<style>
+body {
+  line-height: 200%;
+}
+  h1, h2, h3, h4, h5, h6{
+  margin-top:20px;
+  margin-bottom:10px;
+  line-height: 150%
+}
+</style>
+
+<div>
+  <h3>
+    Chicago Booth Ranks
+  </h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Report name</th>
+        <th>Rank</th>
+        <th>Year</th>
+        <th>Link</th>
+        <th>
+          <% if current_user.present? && current_user.admin == true %>
+          <a href="/rankings/new" class="btn btn-sm btn-danger" style="float:right;">New Ranking</a>
+          <% end %>
+        </th>
+      </tr>
+
+      <% @rankings.each do |ranking| %>
+      <tr>
+        <td><%= ranking.report_name %></td>
+        <td><%= ranking.rank %></td>
+        <td><%= ranking.year %></td>
+        <td><a href="<%= ranking.link %>"><%= ranking.report_name %> Link</a>
+        </td>
+        <td>
+          <% if current_user.present? && current_user.admin == true %>
+          <a href="/rankings/<%= ranking.id %>/edit" class="btn btn-sm btn-warning" style="float:right;">Edit</a>
+          <a href="/delete_ranking/<%= ranking.id %>" class="btn btn-sm btn-danger" rel="nofollow" style="float:right;">Delete</a>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+<h3>Employment Reports</h3>
+
+  <div class="row">
+    <div class="col-md-12"><a href="/https://www.chicagobooth.edu/employmentreport/index.aspx" rel="nofollow">link to Full-Time MBA employment report website</a>
+    </div>
+
+    <div class="col-md-12"><a href="https://www.chicagobooth.edu/employmentreport/docs/2014-2015-Employment-Full-Report.pdf">link to 2015 Full report</a>
+    </div>
+
+  </div>

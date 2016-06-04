@@ -1,0 +1,157 @@
+<!-- Validation failure messages -->
+<% if @alumni.errors.any? %>
+  <% @alumni.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Alumni <%= @alumni.name %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_alumni/<%= @alumni.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for display_nothing -->
+      <div class="checkbox">
+        <label for="display_nothing">
+          <input type="checkbox" id="display_nothing" name="display_nothing" value="1" <%= "checked" if @alumni.display_nothing %>>
+          Check this box if you do not want to be included in the Alumni & Student table <strong>compleatly</strong>
+        </label>
+      </div>
+
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @alumni.user_id %>">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @alumni.name %>">
+      </div>
+
+      <!-- Label and input for classof -->
+      <div class="form-group">
+        <input type="hidden" id="classof" name="classof" placeholder="Classof" class="form-control" value="<%= @alumni.classof %>">
+      </div>
+
+      <!-- Label and input for user_type -->
+      <div class="form-group">
+        <input type="hidden" id="user_type" name="user_type" placeholder="User type" class="form-control" value="<%= @alumni.user_type %>">
+      </div>
+
+      <!-- Label and input for current_employer -->
+      <div class="form-group">
+        <label for="current_employer" class="control-label">
+          Current employer
+        </label>
+
+        <input type="text" id="current_employer" name="current_employer" placeholder="Current employer" class="form-control" value="<%= @alumni.current_employer %>">
+      </div>
+
+      <!-- Label and input for past_employers -->
+      <div class="form-group">
+        <label for="past_employers" class="control-label">
+          Past employers
+        </label>
+
+        <input type="text" id="past_employers" name="past_employers" placeholder="Past employers" class="form-control" value="<%= @alumni.past_employers %>">
+      </div>
+
+      <!-- Label and input for current_location -->
+      <div class="form-group">
+        <label for="current_location" class="control-label">
+          Current location
+        </label>
+
+        <input type="text" id="current_location" name="current_location" placeholder="Current location" class="form-control" value="<%= @alumni.current_location %>">
+
+        <!-- Label and input for display_location -->
+        <div class="checkbox">
+          <label for="display_location">
+            <input type="checkbox" id="display_location" name="display_location" value="1" <%= "checked" if @alumni.display_location %>>
+            Do not show my current location
+          </label>
+        </div>
+      </div>
+
+      <!-- Label and input for booth_email -->
+      <div class="form-group">
+        <label for="booth_email" class="control-label">
+          Booth email
+        </label>
+
+        <input type="text" id="booth_email" name="booth_email" placeholder="Booth email" class="form-control" value="<%= @alumni.booth_email %>">
+
+        <!-- Label and input for display_email -->
+        <div class="checkbox">
+          <label for="display_email">
+            <input type="checkbox" id="display_email" name="display_email" value="1" <%= "checked" if @alumni.display_email %>>
+            Do not show my Booth email
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Label and input for home_email -->
+      <div class="form-group">
+        <label for="home_email" class="control-label">
+          Home email
+        </label>
+
+        <input type="text" id="home_email" name="home_email" placeholder="Home email" class="form-control" value="<%= @alumni.home_email %>">
+        <p>This email will be visibale only to the admin</p>
+      </div>
+
+      <!-- Label and input for linkedin -->
+      <div class="form-group">
+        <label for="linkedin" class="control-label">
+          Linkedin
+        </label>
+
+        <input type="text" id="linkedin" name="linkedin" placeholder="Linkedin" class="form-control" value="<%= @alumni.linkedin %>">
+
+        <!-- Label and input for display_linkedin -->
+        <div class="checkbox">
+          <label for="display_linkedin">
+            <input type="checkbox" id="display_linkedin" name="display_linkedin" value="1" <%= "checked" if @alumni.display_linkedin %>>
+            Do not show my LinkedIn link
+          </label>
+        </div>
+      </div>
+
+
+      <!-- Label and input for phone -->
+      <div class="form-group">
+        <label for="phone" class="control-label">
+          Phone
+        </label>
+
+        <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control" value="<%= @alumni.phone %>">
+        <p>Your phone will be visibale only to the admin</p>
+      </div>
+
+      <!-- Label and input for program -->
+      <div class="form-group">
+        <input type="hidden" id="program" name="program" placeholder="Program" class="form-control" value="<%= @alumni.program %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Alumni
+      </button>
+      or
+      <a href="/alumnis">Cancel</a>
+    </form>
+  </div>
+</div>

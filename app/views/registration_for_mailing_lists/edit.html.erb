@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @registration_for_mailing_list.errors.any? %>
+  <% @registration_for_mailing_list.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Registration For Mailing List #<%= @registration_for_mailing_list.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_registration_for_mailing_list/<%= @registration_for_mailing_list.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for class_of -->
+      <div class="form-group">
+        <label for="class_of" class="control-label">
+          Class of
+        </label>
+
+        <input type="text" id="class_of" name="class_of" placeholder="Class of" class="form-control" value="<%= @registration_for_mailing_list.class_of %>">
+      </div>
+
+      <!-- Label and input for phone -->
+      <div class="form-group">
+        <label for="phone" class="control-label">
+          Phone
+        </label>
+
+        <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control" value="<%= @registration_for_mailing_list.phone %>">
+      </div>
+
+      <!-- Label and input for email -->
+      <div class="form-group">
+        <label for="email" class="control-label">
+          Email
+        </label>
+
+        <textarea id="email" name="email" placeholder="Email" class="form-control" rows="3"><%= @registration_for_mailing_list.email %></textarea>
+      </div>
+
+      <!-- Label and input for current_company -->
+      <div class="form-group">
+        <label for="current_company" class="control-label">
+          Current company
+        </label>
+
+        <textarea id="current_company" name="current_company" placeholder="Current company" class="form-control" rows="3"><%= @registration_for_mailing_list.current_company %></textarea>
+      </div>
+
+      <!-- Label and input for current_industry -->
+      <div class="form-group">
+        <label for="current_industry" class="control-label">
+          Current industry
+        </label>
+
+        <textarea id="current_industry" name="current_industry" placeholder="Current industry" class="form-control" rows="3"><%= @registration_for_mailing_list.current_industry %></textarea>
+      </div>
+
+      <!-- Label and input for full_name -->
+      <div class="form-group">
+        <label for="full_name" class="control-label">
+          Full name
+        </label>
+
+        <textarea id="full_name" name="full_name" placeholder="Full name" class="form-control" rows="3"><%= @registration_for_mailing_list.full_name %></textarea>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Registration For Mailing List
+      </button>
+      or
+      <a href="/registration_for_mailing_lists/<%= @registration_for_mailing_list.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

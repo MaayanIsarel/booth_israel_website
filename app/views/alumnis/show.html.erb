@@ -1,0 +1,62 @@
+<div class="page-header">
+  <h3><%= @alumni.name %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Class of</dt>
+      <dd><%= @alumni.classof %></dd>
+
+      <dt>User type</dt>
+      <dd><%= @alumni.user_type %></dd>
+
+      <dt>Current employer</dt>
+      <dd><%= @alumni.current_employer %></dd>
+
+      <dt>Past employers</dt>
+      <dd><%= @alumni.past_employers %></dd>
+
+      <dt>Current location</dt>
+      <dd><% if @alumni.display_location = true %><%= @alumni.current_location %><% end %></dd>
+
+      <dt>Booth email</dt>
+      <dd><% if @alumni.display_email = true %><%= @alumni.booth_email %><% end %></dd>
+
+      <% if current_user.present? && current_user.admin == true %>
+      <dt>Home email</dt>
+      <dd><%= @alumni.home_email %></dd>
+      <% end %>
+
+      <dt>Linkedin</dt>
+      <dd><% if @alumni.display_linkedin = true %><%= @alumni.linkedin %><% end %></dd>
+
+      <% if current_user.present? && current_user.admin == true %>
+      <dt>Phone</dt>
+      <dd><%= @alumni.phone %></dd>
+      <% end %>
+
+      <dt>Program</dt>
+      <dd><%= @alumni.program %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/alumnis" class="btn btn-primary">
+        Back
+      </a>
+
+      <% if current_user.present? && current_user.admin == true %>
+      <a href="/alumnis/<%= @alumni.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <% end %>
+
+      <% if current_user.present? && current_user.admin == true %>
+      <a href="/delete_alumni/<%= @alumni.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+      <% end %>
+    </div>
+  </div>
+</div>

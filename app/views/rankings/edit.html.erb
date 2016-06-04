@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @ranking.errors.any? %>
+  <% @ranking.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Ranking #<%= @ranking.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_ranking/<%= @ranking.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for link -->
+      <div class="form-group">
+        <label for="link" class="control-label">
+          Link
+        </label>
+
+        <input type="text" id="link" name="link" placeholder="Link" class="form-control" value="<%= @ranking.link %>">
+      </div>
+
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @ranking.year %>">
+      </div>
+
+      <!-- Label and input for rank -->
+      <div class="form-group">
+        <label for="rank" class="control-label">
+          Rank
+        </label>
+
+        <input type="text" id="rank" name="rank" placeholder="Rank" class="form-control" value="<%= @ranking.rank %>">
+      </div>
+
+      <!-- Label and input for report_name -->
+      <div class="form-group">
+        <label for="report_name" class="control-label">
+          Report name
+        </label>
+
+        <textarea id="report_name" name="report_name" placeholder="Report name" class="form-control" rows="3"><%= @ranking.report_name %></textarea>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Ranking
+      </button>
+      or
+      <a href="/rankings/<%= @ranking.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

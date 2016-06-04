@@ -1,0 +1,61 @@
+<style>
+body {
+  line-height: 200%;
+}
+  h1, h2, h3, h4, h5, h6{
+  margin-top:10px;
+  margin-bottom:10px;
+  line-height: 150%
+}
+</style>
+
+<div class="page-header">
+  <h1>
+    Country Captains
+    <% if current_user.present? && current_user.admin == true %>
+    <a href="/country_captains/new" class="btn btn-sm btn-success" style="float:right;">Add New Country Captain</a>
+    <% end %>
+  </h1>
+  <h4>
+    Meet the current Country Captains of Israel at Chicago Booth. We are here to help answer all your questions and make connections to other studens and alumni. If you are coming to visit Chicago please let us know and we would love to assist with housing and logistics if possiable.
+  </h4>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <% @country_captains.each do |country_captain| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <dd><h3><%= country_captain.name %></h3></dd>
+          <dd><img src="<%= country_captain.picture %>" alt="" />
+          </dd>
+          <dd>Email: <%= country_captain.email %></dd>
+          <dd>Linkedin Profile: <a href="<%= country_captain.linkedin %>"><%= country_captain.linkedin %></a></dd>
+        </div>
+
+        <div class="col-md-5">
+          <dl class=""></dl>
+          <dl><strong>Undergrad University & Major:</strong> <%= country_captain.undergrad %></dl>
+          <dl><strong>Previous industry:</strong> <%= country_captain.previous_industry %></dl>
+          <dl><strong>Summer internship / Career plans: </strong> <%= country_captain.summer_internship %></dl>
+          <dl><strong>Ask me about:</strong> <%= country_captain.ask_me %></dl>
+        </div>
+
+        <% if current_user.present? && current_user.admin == true %>
+        <div class="col-md-1">
+          <dl class=""></dl>
+          <a href="/country_captains/<%= country_captain.id %>/edit" class="btn btn-warning" rel="nofollow" style="float:right;">Edit</a>
+          <a href="/delete_country_captain/<%= country_captain.id %>" class="btn btn-danger" rel="nofollow" style="float:right;">Delete</a>
+        </div>
+        <% end %>
+
+        <div class="">
+        </div>
+
+      </div>
+    </div>
+    <hr>
+    <% end %>
+  </div>
+</div>
