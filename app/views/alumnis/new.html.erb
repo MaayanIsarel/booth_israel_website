@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Alumni</h3>
+  <h3>Add Alumni/Student</h3>
 </div>
 
 <div class="row">
@@ -17,46 +17,6 @@
     <form action="/create_alumni" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for display_nothing -->
-      <div class="checkbox">
-        <label for="display_nothing">
-          <input type="checkbox" id="display_nothing" name="display_nothing" value="1" <%= "checked" if @alumni.display_nothing %>>
-          Display nothing
-        </label>
-      </div>
-
-      <!-- Label and input for display_linkedin -->
-      <div class="checkbox">
-        <label for="display_linkedin">
-          <input type="checkbox" id="display_linkedin" name="display_linkedin" value="1" <%= "checked" if @alumni.display_linkedin %>>
-          Display linkedin
-        </label>
-      </div>
-
-      <!-- Label and input for display_email -->
-      <div class="checkbox">
-        <label for="display_email">
-          <input type="checkbox" id="display_email" name="display_email" value="1" <%= "checked" if @alumni.display_email %>>
-          Display email
-        </label>
-      </div>
-
-      <!-- Label and input for display_location -->
-      <div class="checkbox">
-        <label for="display_location">
-          <input type="checkbox" id="display_location" name="display_location" value="1" <%= "checked" if @alumni.display_location %>>
-          Display location
-        </label>
-      </div>
-
-      <!-- Label and input for display_phone -->
-      <div class="checkbox">
-        <label for="display_phone">
-          <input type="checkbox" id="display_phone" name="display_phone" value="1" <%= "checked" if @alumni.display_phone %>>
-          Display phone
-        </label>
-      </div>
 
       <!-- Label and input for user_id -->
       <div class="form-group">
@@ -79,7 +39,7 @@
       <!-- Label and input for classof -->
       <div class="form-group">
         <label for="classof" class="control-label">
-          Classof
+          Class of
         </label>
 
         <input type="text" id="classof" name="classof" placeholder="Classof" class="form-control" value="<%= @alumni.classof %>">

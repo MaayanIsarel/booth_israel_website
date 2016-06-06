@@ -1,4 +1,15 @@
 class AlumnisController < ApplicationController
+  before_action :authenticate_user, only: [ :edit, :update, :destroy]
+
+def authenticate_user
+  a_user_id =  Alumni.find(params[:id]).user_id
+  if current_user.blank? || (a_user_id != current_user.id) && (current_user.admin !=true)
+    redirect_to "/", :alert => "You are not authorized"
+  end
+end
+
+
+
   def index
     @q = Alumni.ransack(params[:q])
     @alumnis = @q.result

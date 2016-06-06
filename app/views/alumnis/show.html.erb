@@ -46,8 +46,8 @@
         Back
       </a>
 
-      <% if current_user.present? && current_user.admin == true %>
-      <a href="/alumnis/<%= @alumni.id %>/edit" class="btn btn-warning">
+<% if (current_user.present? && (current_user.admin == true || current_user.id == alumni.user_id )) %>
+     <a href="/alumnis/<%= @alumni.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <% end %>
